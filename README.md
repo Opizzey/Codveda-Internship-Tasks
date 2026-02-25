@@ -97,9 +97,9 @@ Building blocks of the web - semantic markup, responsive design, and vanilla Jav
 **Status**: In Progress
 
 #### Task 1: Responsive Landing Page
-- [ ] Project setup complete
-- [ ] HTML structure implemented
-- [ ] CSS styling with Flexbox/Grid
+- [*] Project setup complete
+- [*] HTML structure implemented
+- [*] CSS styling with Flexbox/Grid
 - [ ] Mobile-responsive design
 - [ ] Smooth scrolling & animations
 - [ ] Deployed to live server
