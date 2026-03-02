@@ -37,61 +37,91 @@
 
      <main>
         <!-- Hero section -->
-        <section>
-            <h1>Welcome to the Future</h1>
-            <p>Build amazing responsive websites with modern web technologies.</p>
-            <button>Get Started</button>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Welcome to the Future</h1>
+                <p class="hero-subtitle">Build amazing responsive websites with modern web technologies.</p>
+                <a href="#features" class="cta-button">Get Started</a>
+            </div>
         </section>
 
         <!-- Features section -->
-        <section>
-            <div>
-                <h2>Our features</h2>
-                <article>
-                    <h3>Responsive Design</h3>
-                    <p>Our websites look great on any device, from desktops to smartphones.</p>
-                </article>
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section-title">Our features</h2>
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">💻</div>
+                        <h3 class="feature-title">Responsive Design</h3>
+                        <p class="feature-description">Our websites look great on any device, from desktops to smartphones.</p>
+                    </article>
 
-                <article>
-                    <h3>Modern CSS</h3>
-                    <p>Built with the latest CSS techniques for a sleek and modern look.</p>
-                </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3 class="feature-title">Modern CSS</h3>
+                        <p class="feature-description">Built with the latest CSS techniques for a sleek and modern look.</p>
+                    </article>
 
-                <article>
-                    <h3>Fast Performance</h3>
-                    <p>Optimized for speed and efficiency, ensuring a smooth user experience.</p>
-                </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3 class="feature-title">Fast Performance</h3>
+                        <p class="feature-description">Optimized for speed and efficiency, ensuring a smooth user experience.</p>
+                    </article>
+                </div>
             </div>
         </section>
 
          <!-- About Section -->
-          <section>
-            <h2>About This Project</h2>
-            <p>This landing page demonstrates essential frontend development skills including semantic HTML, responsive design, and modern CSS techniques. Built as part of the Codveda Internship program.</p>
+          <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">About This Project</h2>
+                <p class="about-text">This landing page demonstrates essential frontend development skills including semantic HTML, responsive design, and modern CSS techniques. Built as part of the Codveda Internship program.</p>
+            </div>
           </section>
 
           <!-- Contact Section -->
-        <section>
-            <h2>Get In Touch</h2>
-            <p>If you have any questions or would like to work together, feel free to reach out!</p>
-                <form action="mailto:dopiyoochieng@gmail.com" method="post" enctype="text/plain">
-                    <input type="text" placeholder="Your Name" name="Name" required>
-                    <input type="email" placeholder="Your Email" name="Name" required>
-                    <textarea placeholder="Your Message" rows="5" required></textarea>
-                    <button type="submit">Send Message</button>
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-description">If you have any questions or would like to work together, feel free to reach out!</p>
+
+                <form class="contact-form" action="mailto:dopiyoochieng@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <input class="form-input" type="text" placeholder="Your Name" name="Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-input" type="email" placeholder="Your Email" name="Email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea class="form-input" placeholder="Your Message" name="Message" rows="5" required></textarea>
+                    </div>
+
+                    <button class="form-button" type="submit">Send Message</button>
                 </form>
-            </p>
+            </div>
         </section>
      </main>
 
      <!-- Footer -->
-      <footer>
-        <p>&copy; 2026 Dennis Opiyo Ochieng. All rights reserved.</p>
-        <p>Follow me on <a href="#">Twitter</a>, <a href="#">LinkedIn</a>, and <a href="#">GitHub</a>.</p>
+      <footer class="footer">
+        <div class="container">
+            <p class="footer-copyright">&copy; 2026 Dennis Opiyo Ochieng. All rights reserved.</p>
+            <div class="footer-social">
+                <p>Follow me on
+                    <a href="https://x.com/breezy_dennol?s=21" class="social-link" target="_blank" rel="noopener noreferrer">Twitter</a>
+                    <a href="https://www.linkedin.com/in/dennis-opiyo-8725b8146/" class="social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>, and
+                    <a href="https://github.com/Opizzey" class="social-link" target="_blank" rel="noopener noreferrer">GitHub</a>.
+                </p>
+            </div>
+        </div>
       </footer>
 
       <!-- Back to Top Button -->
-      <button id="back-to-top">Back to Top</button>
+      <button id="back-to-top" class="btn-back-to-top" aria-label="Back to top">
+        ↑
+      </button>
 
       <script src="script.js"></script>
 </body>
