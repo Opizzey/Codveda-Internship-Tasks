@@ -1,69 +1,427 @@
-/* CSS RESET - removing default browser styles */
+/* ============================================
+   COMPLETE CSS STYLESHEET - RESPONSIVE LANDING PAGE
+   Author: Dennis Opiyo Ochieng
+   Purpose: Codveda Internship - Level 1 Task 1
+   ============================================ */
+
+/* ============================================
+   1. CSS RESET & BASE STYLES
+   ============================================ */
+
+/* Reset default browser styles for consistency across browsers */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
-/* CSS Variables for colors and fonts */
+/* ============================================
+   2. CSS CUSTOM PROPERTIES (VARIABLES)
+   ============================================ */
+
+/* 
+   Define reusable values once and use them everywhere
+   Benefits: Easy to change entire color scheme, consistent design
+*/
 :root {
     --primary-color: #2563eb;
     --secondary-color: #1e40af;
     --text-color: #1f2937;
+    --text-light: #4b5563;
     --light-bg: #f9fafb;
     --white: #ffffff;
 
-    --spacing-xs: 0.5rem;   /* 8px */
-    --spacing-sm: 1rem;     /* 16px */
-    --spacing-md: 2rem;     /* 32px */
-    --spacing-lg: 3rem;     /* 48px */
-    --spacing-xl: 4rem;     /* 64px */
-    
-    --font-sm: 0.875rem;    /* 14px */
-    --font-base: 1rem;      /* 16px */
-    --font-lg: 1.25rem;     /* 20px */
-    --font-xl: 1.5rem;      /* 24px */
-    --font-2xl: 2rem;       /* 32px */
-    --font-3xl: 3rem;       /* 48px */
+    /* === SPACING SCALE === */
+    /* Following 8px base grid system */
 
+    --spacing-xs: 0.5rem;   /* 8px - Tiny gaps */
+    --spacing-sm: 1rem;     /* 16px - Small gaps */
+    --spacing-md: 2rem;     /* 32px - Medium gaps */
+    --spacing-lg: 3rem;     /* 48px - Large gaps */
+    --spacing-xl: 4rem;     /* 64px - Extra large gaps */
+    
+
+    /* === TYPOGRAPHY SCALE === */
+    /* Using a modular scale for font sizes */
+    --font-sm: 0.875rem;    /* 14px - Small text */
+    --font-base: 1rem;      /* 16px - Base text */
+    --font-lg: 1.25rem;     /* 20px - Large text */
+    --font-xl: 1.5rem;      /* 24px - Extra large text */
+    --font-2xl: 2rem;       /* 32px - 2x large text */
+    --font-3xl: 3rem;       /* 48px - 3x large text */
+
+    /* ===EFFECTS & TRANSITIONS === */
+    /* Common effects and transitions for interactive elements */
     --transition: all 0.3s ease;
     --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
+/* ============================================
+   3. HTML & BODY BASE STYLES
+   ============================================ */
+
+/* Smooth scrolling when clicking anchor links */
 html {
     scroll-behavior: smooth;
     font-size: 16px;
 }
 
+/* Apply base font and colors to the entire page */
 body {
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--white);
+    font-family: 'Roboto', sans-serif; /* clean, modern font */
+    line-height: 1.6; /* Space between lines (improves readability) */
+    color: var(--text-color); /* Default text color */
+    background-color: var(--white); /* Page background */
 }
 
-/*Navigation Bar - Using Flex */
+/* ============================================
+   4. REUSABLE UTILITY CLASSES
+   ============================================ */
+
+/* 
+   Container: Centers content and limits max width
+   Used in: Features, About, Contact, Footer
+*/
+
+.container {
+    max-width: 1200px; /* Limit content width for better readability */
+    margin: 0 auto; /* Center container horizontally */
+    padding: 0 var(--spacing-lg); /* Horizontal padding for spacing on smaller screens */
+}
+
+/* 
+   Section Title: Standard styling for all section headings
+   Used in: Features, About, Contact
+*/
+.section-title {
+    font-size: var(--font-2xl); /* Large font size for titles */
+    color: var(--primary-color); /* Primary color for emphasis */
+    margin-bottom: var(--spacing-md); /* Space below title */
+    text-align: center; /* Center align titles */
+}
+
+/* ============================================
+   5. NAVIGATION BAR (HEADER)
+   ============================================ */
+
+/* 
+   Header: Sticky navigation that stays at top while scrolling
+   z-index: Ensures nav stays above other content
+*/
 header {
-    background: var(--white);
-    box-shadow: var(--shadow);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background: var(--white); /* White background for contrast */
+    box-shadow: var(--shadow); /* Subtle shadow for depth */
+    position: sticky; /* Stick to top of viewport when scrolling */
+    top: 0; /* Position at the top */
+    z-index: 1000; /* Ensure it stays above other content */
 }
 
+/* 
+   Navbar: Flexbox layout for logo and navigation links
+   justify-content: space-between → Logo left, links right
+*/
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: var(--spacing-sm); /* Padding for spacing inside the navbar */
+    max-width: 1200px; /* Limit navbar width for better readability */
+    margin: 0 auto; /* Center navbar horizontally */
 }
 
-.navbar ul {
-    list-style: none;
+/* Logo Styling */
+.logo {
+    font-size: var(--font-xl);
+    font-weight: 700;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* 
+   Navigation Links: Horizontal list using Flexbox
+   list-style: none → Removes bullet points
+*/
+
+.nav-links {
+    list-style: none; /* Remove default list styling */
+    display: flex; /* Use flexbox for horizontal layout */
+    gap: var(--spacing-md);
+    align-items: center; /* Center items vertically */
+}
+
+/* Individual navigation links */
+.nav-links li a {
+    text-decoration: none; /* Remove underline from links */
+    color: var(--text-color); /* Default link color */
+    font-weight: 500;
+    font-size: var(--font-base);
+    transition: var(--transition); /* Smooth transition for hover effect */
+    padding: var(--spacing-xs) var(--spacing-sm); /* Padding for clickable area */
+    border-radius: 50px; /* Rounded corners for better aesthetics */
+}
+
+/* Hover effect for navigation links */
+.nav-links li a:hover {
+    background-color: var(--primary-color); /* Background color on hover */
+    color: var(--white); /* Text color on hover */
+}
+
+/* 
+   Mobile Menu Toggle: Hamburger icon (hidden on desktop)
+   Will be made visible on mobile using media queries
+*/
+.menu-toggle {
+    display: none; /* Hidden by default, shown on mobile */
+    flex-direction: column; /* Stack hamburger lines vertically */
+    cursor: pointer; /* Cursor pointer for better UX */
+    gap: 0.25rem; /* Space between hamburger lines */
+}
+
+/* Hamburger lines */
+.menu-toggle div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 2px; /* Rounded edges for better aesthetics */
+}
+
+/* ============================================
+   6. HERO SECTION
+   ============================================ */
+
+/* 
+   Hero: Full-height welcome section with centered content
+   min-height: 100vh → Takes full viewport height
+   display: flex → Centers content vertically and horizontally
+*/
+.hero {
+    min-height: 100vh; /* Full viewport height */
     display: flex;
-    gap: 1.5rem;
-    align-items: center;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%); /* Gradient background for visual appeal */
+    padding: var(--spacing-xl); /* Padding for spacing on smaller screens */
+    text-align: center; /* Center text in hero section */
 }
 
+/* Hero Content Wrapper */
+.hero-content {
+    max-width: 600px; /* Limit width for better readability */
+}
+
+/* Hero main heading */
+.hero-title {
+    font-size: var(--font-3xl); /* Extra large font for main title */
+    font-weight: 700; /* Bold font for emphasis */
+    color: var(--text-color); /* Default text color */
+    margin-bottom: var(--spacing-sm); /* Space below title */
+    line-height: 1.2; /* Reduce line height for tighter text */
+}
+
+/* Hero subheading */
+.hero-subtitle {
+    font-size: var(--font-lg); /* Large font for subtitle */
+    color: var(--text-color); /* Default text color */
+    margin-bottom: var(--spacing-md); /* Space below subtitle */
+    line-height: 1.6; /* Improve readability */
+}
+
+/* 
+   Call-to-Action Button: Prominent button to guide users
+   display: inline-block → Makes <a> tag behave like button
+*/
+.cta-button {
+    display: inline-block; /* Make link behave like a button */
+    padding: var(--spacing-sm) var(--spacing-lg); /* Padding for larger clickable area */
+    background-color: var(--primary-color); /* Primary color for emphasis */
+    color: var(--white); /* White text for contrast */
+    font-size: var(--font-base); /* Base font size */
+    font-weight: 600; /* Medium weight for better readability */
+    border-radius: 5px; /* Rounded corners for better aesthetics */
+    text-decoration: none; /* Remove underline from link */
+    transition: var(--transition); /* Smooth transition for hover effect */
+    box-shadow: var(--shadow); /* Subtle shadow for depth */
+}
+
+/* Hover effect for Call-to-Action Button */
+.cta-button:hover {
+    background-color: var(--secondary-color); /* Darker shade on hover */
+    color: var(--white); /* Ensure text remains readable */
+    box-shadow: var(--shadow-lg); /* Darker shadow on hover */
+}
+
+/* ============================================
+   7. FEATURES SECTION
+   ============================================ */
+
+/* Features section background */
+.features-section {
+    background-color: var(--light-bg); /* Light background for contrast */
+    padding: var(--spacing-xl) 0; /* Vertical padding for spacing */
+}
+
+/* 
+   Features Grid: CSS Grid for responsive card layout
+   Desktop: 3 columns, Tablet: 2 columns, Mobile: 1 column
+   This is the MOBILE-FIRST approach (starts with 1 column)
+*/
+.features-grid {
+    display: grid; /* Use CSS Grid for layout */
+    grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
+    gap: var(--spacing-lg); /* Space between feature cards */
+}
+
+/* 
+   Feature Card: Individual feature box
+   article is semantic HTML for self-contained content
+*/
+.feature-card {
+    background-color: var(--white); /* White background for cards */
+    padding: var(--spacing-md); /* Padding inside cards */
+    border-radius: 10px; /* Rounded corners for better aesthetics */
+    box-shadow: var(--shadow); /* Subtle shadow for depth */
+    text-align: center; /* Center text inside cards */
+    transition: var(--transition); /* Smooth transition for hover effect */
+    box-shadow:  0 2px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+
+/* Feature card hover effect */
+.feature-card:hover {
+    transform: translateY(-5px);/* Lift card up */
+    box-shadow: var(--shadow-lg);/* Bigger shadow for depth */
+}
+
+/* Feature icon styling */
+.feature-icon {
+    font-size: 3rem; /* Large icon size for visual impact */
+    margin-bottom: var(--spacing-sm); /* Space below icon */
+}
+
+/* Feature card title details */
+.feature-title {
+    font-size: var(--font-xl);
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Feature card description */
+.feature-description {
+    font-size: var(--font-base);
+    color: var(--text-light);
+    line-height: 1.6; /* Improve readability */
+}
+
+/* ============================================
+   8. ABOUT SECTION
+   ============================================ */
+
+.about-section {
+    padding: var(--spacing-xl) 0; /* Vertical padding for spacing */
+    background-color: var(--light-bg);
+    text-align: center; /* Center text in about section */
+}
+
+/* About section text */
+.about-text{
+    font-size: var(--font-lg);
+    color: var(--text-color);
+    max-width: 800px; /* Limit width for better readability */
+    margin: 0 auto; /* Center text horizontally */
+    line-height: 1.6; /* Improve readability */
+}
+
+/* ============================================
+   9. CONTACT SECTION
+   ============================================ */
+.contact-section {
+    padding: var(--spacing-xl) 0; /* Vertical padding for spacing */
+    background-color: var(--white);
+}
+
+/* Section Description (subtitle) */
+.section-description {
+    text-align: center; /* Center text for section description */
+    font-size: var(--font-base);
+    color: var(--text-light);
+    margin-bottom: var(--spacing-lg); /* Space below description */
+}
+
+/* 
+   Contact Form: Flexbox column layout
+   display: flex → Stack form fields vertically
+*/
+.contact-form {
+    max-width: 600px; /* Limit form width for better readability */
+    margin: 0 auto; /* Center form horizontally */
+    display: flex; /* Use Flexbox for layout */
+    flex-direction: column; /* Stack form fields vertically */
+    gap: var(--spacing-sm); /* Space between form fields */
+}
+
+/* Form group: Wrapper for each input */
+.form-group {
+    width: 100%; /* Full width for form fields */
+}
+
+/* 
+   Form inputs and textarea
+   Consistent styling for all input fields
+*/
+.form-input {
+    width: 100%; /* Full width for better usability */
+    padding: var(--spacing-sm); /* Padding inside input fields */
+    border: 2px solid var(--light-bg); /* Light border for inputs */
+    border-radius: 5px; /* Rounded corners for better aesthetics */
+    font-size: var(--font-base); /* Base font size for inputs */
+    font-family: 'Roboto', sans-serif; /* Consistent font for inputs */
+    color: var(--text-color); /* Input text color */
+    background-color: var(--white); /* White background for inputs */
+    transition: var(--transition); /* Smooth transition for focus effect */
+}
+
+/* Input focus state (when user clicks in field) */
+.form-input:focus {
+    outline: none;
+    /* Remove default browser outline */
+    border-color: var(--primary-color);
+    /* Change border to brand color */
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    /* Subtle glow */
+}
+
+/* Textarea specific styles */
+textarea.form-input {
+    resize: vertical;
+    /* Allow vertical resize only */
+    min-height: 120px;
+    /* Minimum height */
+}
+
+/* Form submit button */
+.form-button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    /* Remove default button border */
+    border-radius: 5px;
+    font-size: var(--font-base);
+    font-weight: 600;
+    cursor: pointer;
+    /* Pointer on hover */
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+/* Form button hover effect */
+.form-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ============================================
+   10. FOOTER
+   ============================================ */
