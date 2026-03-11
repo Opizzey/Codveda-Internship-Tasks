@@ -101,7 +101,7 @@ Building blocks of the web - semantic markup, responsive design, and vanilla Jav
 - [x] HTML structure implemented (semantic HTML5 with all classes/IDs)
 - [x] CSS styling with Flexbox/Grid
 - [x] Mobile-responsive design (media queries implemented)
-- [ ] JavaScript interactivity (mobile menu, back to top, smooth scroll)
+- [x] JavaScript interactivity (mobile menu, back to top, smooth scroll)
 - [ ] Testing & refinements
 - [ ] Deployed to live server
 
